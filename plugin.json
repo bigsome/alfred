@@ -1,0 +1,17 @@
+{
+  "name": "alfred-plugin",
+  "version": "1.0.0",
+  "description": "Alfred - El mayordomo y asistente documental definitivo para la estructuración y mantenimiento del vault de documentación de cualquier proyecto.",
+  "author": {
+    "name": "David Rosello / Antigravity"
+  },
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "vault",
+    "protocol",
+    "git",
+    "automation",
+    "boilerplate"
+  ]
+}
