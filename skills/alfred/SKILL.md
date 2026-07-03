@@ -178,7 +178,30 @@ ai_directives:
 - **Backend/Base de Datos**: [Especificar, ej. Node.js / PostgreSQL / Supabase]
 
 ## Flujos de Datos Core
-(Describir brevemente el flujo principal del sistema).
+(Describir el flujo principal utilizando un diagrama de flujo de Mermaid y un breve texto explicativo. Consulta el skill `mermaid` para la sintaxis y diseño).
+
+```mermaid
+flowchart TD
+    subgraph Cliente
+        FE["Frontend (Web/Mobile)"]
+    end
+    subgraph API
+        BE["Backend API"]
+    end
+    subgraph DB
+        Database[(Base de Datos)]
+    end
+    FE -->|Solicitud API| BE
+    BE -->|Query/Persistir| Database
+```
+
+## Arquitectura de Datos / Entidades
+(Describir el modelo de datos principal mediante un diagrama de entidad-relación (ERD) en Mermaid).
+
+```mermaid
+erDiagram
+    USUARIOS ||--o{ SESIONES : "tienen"
+```
 ```
 
 *Nota: Al crear estos archivos, reemplaza `YYYY-MM-DD` con la fecha actual y pídele al usuario un resumen rápido de la tecnología o negocio para rellenar los valores básicos (como el stack tecnológico en `ARCHITECTURE.md`).*
@@ -189,8 +212,9 @@ ai_directives:
 
 Cuando el usuario requiera planificar una nueva feature relevante:
 1. **Ejecuta o apóyate en el skill `grill-me`** para realizar la entrevista de diseño técnico y de negocio.
-2. Al finalizar la entrevista, consolida las conclusiones de diseño creando un archivo de propuesta técnica específico en la carpeta de documentación (ej. `docs/PROPOSAL_FEATURE_NAME.md`) o inyecta el diseño en `docs/USER_STORIES.md`.
-3. Registra este documento en el `INDEX.md` y vincula la feature al `ROADMAP.md` en el sprint actual.
+2. Al finalizar la entrevista, consolida las conclusiones de diseño creando un archivo de propuesta técnica específico en la carpeta de documentación (ej. `docs/PROPOSAL_FEATURE_NAME.md`) o inyecta el diseño en `docs/USER_STORIES.md`. **En este documento, incorpora diagramas de flujo o de secuencia en Mermaid para detallar el flujo y la interacción de la feature.**
+3. Apóyate en el skill `mermaid` para verificar la validez sintáctica de los diagramas propuestos y asegurar que tengan un diseño limpio y moderno.
+4. Registra este documento en el `INDEX.md` y vincula la feature al `ROADMAP.md` en el sprint actual.
 
 ---
 
@@ -199,7 +223,9 @@ Cuando el usuario requiera planificar una nueva feature relevante:
 Cuando completes el desarrollo de una feature o fix relevante, debes aplicar el siguiente protocolo documental:
 
 ### A. Actualizar Changelog e Historial
-- **Qué actualizar:** `docs/CHANGELOG.md` y el roadmap (`docs/ROADMAP.md` marcando el item como completado).
+- **Qué actualizar:** 
+  - `docs/CHANGELOG.md` y el roadmap (`docs/ROADMAP.md` marcando el item como completado).
+  - Si los cambios de la feature alteran la arquitectura de la aplicación o el modelo relacional, actualiza los diagramas Mermaid correspondientes en `docs/ARCHITECTURE.md`.
 - **Idiomas:** Si el proyecto tiene localización activa (como traducciones múltiples), actualiza la sección correspondiente.
 
 ### B. Generar el Mapa de Archivos e Integración de Código
